@@ -15,7 +15,7 @@
         <a href="" class="nav-link link-light fs-4">Магазин</a>
         <nav class="nav">
             {% if user.is_authenticated %}
-                <a href="{% url 'ekz:profile' %}" class="nav-link link-light">Профиль</a>
+                <a href="{% url 'ekz:profile' username=request.user.username %}" class="nav-link link-light">Профиль</a>
                 <a href="{% url 'ekz:logout' %}" class="nav-link link-light">Выйти из аккаунта</a>
             {% else %}
                 <a href="{% url 'ekz:register' %}" class="nav-link link-light">Регистрация</a>
