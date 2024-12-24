@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .forms import UserForm
-from .models import User
+from .models import User, Product
 
 
 def home(request):
@@ -24,3 +24,7 @@ def register(request):
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, "store/profile.html", {'user_profile': user})
+
+def catalog(request):
+    products = Product.objects.all()
+    return render(request, "store/catalog.html", {"products": products})

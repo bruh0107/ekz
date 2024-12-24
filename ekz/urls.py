@@ -11,5 +11,5 @@ urlpatterns = [
 
     path('profile/<str:username>/', views.profile, name='profile'),
 
-
+    path('catalog/', views.catalog, name='catalog')
 ]
