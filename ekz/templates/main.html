@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Главная {% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="bg-primary">
+    <div class="container d-flex align-center justify-content-between py-4">
+        <a href="" class="nav-link link-light fs-4">Магазин</a>
+        <nav class="nav">
+            {% if user.is_authenticated %}
+                <a href="{% url 'ekz:profile' %}" class="nav-link link-light">Профиль</a>
+                <a href="{% url 'ekz:logout' %}" class="nav-link link-light">Выйти из аккаунта</a>
+            {% else %}
+                <a href="{% url 'ekz:register' %}" class="nav-link link-light">Регистрация</a>
+                <a href="{% url 'ekz:login' %}" class="nav-link link-light">Авторизация</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+</body>
+</html>
